@@ -2,6 +2,9 @@ export default function About() {
     return (
         <>
             <div id="work">
+                <div>
+                    <p className="text-base font-semibold text-orange-800"> About</p>
+                </div>
                 <article className="my-4">
                     I started my software career by converting designs created on the internet, mostly in Figma, into software using HTML, CSS, and JS.
                     Then, I developed web applications that interacted more with the user using Angular 5 (a JavaScript-based framework).
