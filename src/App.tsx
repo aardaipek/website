@@ -5,6 +5,7 @@ import BookmarkPage from './views/bookmark';
 import Index from './views';
 import AboutPage from './views/about';
 import SettingsPage from './views/settings';
+import PortfolioPage from './views/portfolio';
 
 
 
@@ -14,6 +15,7 @@ const routes = createBrowserRouter(
       <Route path='/' element={<Index/>}></Route>
       <Route path='/about' element={<AboutPage/>}></Route>
       <Route path='/settings' element={<SettingsPage/>}></Route>
+      <Route path='/portfolio' element={<PortfolioPage/>}></Route>
     </>
   )
 )

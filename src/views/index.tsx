@@ -4,6 +4,7 @@ import Navbar from "../components/navbar"
 import About from "../components/about";
 import Contact from "../components/contact";
 import Quotes from "../components/quotes";
+import Portfolio from "../components/portfolio";
 
 
 export default function Index() {
@@ -15,6 +16,7 @@ export default function Index() {
                 <Contact/>
                 <About/>
                 <Quotes/>
+                <Portfolio/>
                 <Footer/>
             </div>
         </div>
