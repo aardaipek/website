@@ -16,6 +16,9 @@ export default function Navbar() {
                         <li>
                             <a href="https://medium.com/@aardaipek" target="_blank" className="py-2 px-3 md:p-0 text-orange-800 hover:text-orange-500 hover:underline">Writings</a>
                         </li>
+                        <li>
+                            <a href="/portfolio" className="py-2 px-3 md:p-0 text-orange-800 hover:text-orange-500 hover:underline">Portfolio</a>
+                        </li>
                     </ul>
                 </div>
             </div>
