@@ -19,8 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["node_modules/@types", "types"],
-    "types": ["@headlessui/react", "node"]
+    "typeRoots": ["node_modules/@types", "types"]
   },
   "include": [
     "src"

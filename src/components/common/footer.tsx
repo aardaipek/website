@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <footer className="container flex flex-row">
             <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-                <span className="block text-sm  sm:text-center text-gray-400">Arda Ipek. {currentDate.getFullYear()}. ❤ Code. </span>
+                <span className="block text-sm  sm:text-center text-gray-300">Arda Ipek {currentDate.getFullYear()}. ❤ <span className='text-sm  sm:text-center text-red-200'>Sumy</span></span>
             </div>
         </footer>
     )

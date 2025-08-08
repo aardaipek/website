@@ -1,29 +1,16 @@
-import React from 'react';
 import './App.css';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
-import BookmarkPage from './views/bookmark';
-import Index from './views';
-import AboutPage from './views/about';
-import SettingsPage from './views/settings';
-import PortfolioPage from './views/portfolio';
+import { Suspense } from 'react';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { routes } from './routes';
 
+const router = createBrowserRouter(routes);
 
-
-const routes = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path='/' element={<Index/>}></Route>
-      <Route path='/about' element={<AboutPage/>}></Route>
-      <Route path='/settings' element={<SettingsPage/>}></Route>
-      <Route path='/portfolio' element={<PortfolioPage/>}></Route>
-    </>
-  )
-)
-
-function App() {
+function App(): JSX.Element {
   return (
-    <RouterProvider router={routes} />
-  )
+    <Suspense fallback={<div>Loading...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
 
 export default App;

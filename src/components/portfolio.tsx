@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 const portfolioData = [
-  { symbol: 'AAPL', shares: 10, price: 150.00 },
-  { symbol: 'GOOGL', shares: 5, price: 2800.00 },
-  { symbol: 'AMZN', shares: 2, price: 3400.00 },
-  { symbol: 'MSFT', shares: 8, price: 300.00 },
-];
+  { symbol: 'AAPL', shares: 10, price: 150.0 },
+  { symbol: 'GOOGL', shares: 5, price: 2800.0 },
+  { symbol: 'AMZN', shares: 2, price: 3400.0 },
+  { symbol: 'MSFT', shares: 8, price: 300.0 },
+]
 
 const Portfolio: React.FC = () => {
   return (
@@ -17,12 +17,20 @@ const Portfolio: React.FC = () => {
             <h2 className="text-xl font-bold">{stock.symbol}</h2>
             <p className="text-gray-600">Shares: {stock.shares}</p>
             <p className="text-gray-600">Price: ${stock.price.toFixed(2)}</p>
-            <p className="text-gray-600">Total: ${(stock.shares * stock.price).toFixed(2)}</p>
+            <p className="text-gray-600">
+              Total: ${(stock.shares * stock.price).toFixed(2)}
+            </p>
           </div>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Portfolio;
+export default function PortfolioDashboard() {
+  return (
+    <>
+      <span>Arda test</span>
+    </>
+  )
+}
