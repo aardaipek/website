@@ -1,16 +1,15 @@
-import React from 'react';
-import Portfolio from '../components/portfolio';
-import Navbar from '../components/common/navbar';
-import Footer from '../components/common/footer';
+import React from 'react'
+import Portfolio from '../components/portfolio'
+import Layout from '../components/common/layout'
 
 const PortfolioPage: React.FC = () => {
   return (
-    <div>
-      <Navbar />
-      <Portfolio />
-      <Footer />
-    </div>
-  );
-};
+    <>
+      <Layout>
+        <Portfolio />
+      </Layout>
+    </>
+  )
+}
 
-export default PortfolioPage;
+export default PortfolioPage

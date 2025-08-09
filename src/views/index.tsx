@@ -1,19 +1,14 @@
-import Footer from '../components/common/footer'
-import Navbar from '../components/common/navbar'
+import Layout from '../components/common/layout'
 import Quotes from '../components/quotes'
 import { contents } from '../content'
 
 export default function Index() {
   return (
-    <div className="flex container mx-auto max-w-screen-md place-content-center">
-      <div className="justify-center items-center">
-        <Navbar />
-        <SimpleAbout />
-        <Contact />
-        <Quotes />
-        <Footer />
-      </div>
-    </div>
+    <Layout>
+      <SimpleAbout />
+      <Contact />
+      <Quotes />
+    </Layout>
   )
 }
 

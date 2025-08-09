@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 type Quote = {
   Author: string
@@ -42,8 +42,8 @@ export default function Quotes() {
   }, [fetchQuotes])
 
   return (
-    <div id="bookmarks" className="mt-12">
-      <div className="relative flex min-h-screen flex-col justify-center pb-24">
+    <>
+      <div className="relative flex min-h-screen flex-col justify-center ">
         <div>
           <p className="text-base font-semibold text-orange-800">Quotes</p>
           <p className="text-md">
@@ -86,6 +86,6 @@ export default function Quotes() {
           ))}
         </div>
       </div>
-    </div>
+    </>
   )
 }
