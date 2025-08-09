@@ -1,6 +1,5 @@
 import Footer from '../components/common/footer'
 import Navbar from '../components/common/navbar'
-import About from '../components/about'
 import Quotes from '../components/quotes'
 import { contents } from '../content'
 
@@ -11,7 +10,6 @@ export default function Index() {
         <Navbar />
         <SimpleAbout />
         <Contact />
-        <About />
         <Quotes />
         <Footer />
       </div>
