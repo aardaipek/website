@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  background-color: #b45309;
+  color: white;
+}
+
+.dark ::selection {
+  background-color: #d97706;
+}
+
+.prose {
+  @apply text-stone-700 dark:text-stone-300 leading-relaxed;
+}
+
+.prose h2 {
+  @apply font-serif text-xl text-stone-900 dark:text-stone-100 mt-10 mb-4;
+}
+
+.prose h3 {
+  @apply font-serif text-lg text-stone-900 dark:text-stone-100 mt-8 mb-3;
+}
+
+.prose p {
+  @apply mb-5;
+}
+
+.prose a {
+  @apply text-amber-700 dark:text-amber-500 underline underline-offset-2 decoration-amber-700/30 dark:decoration-amber-500/30 hover:decoration-amber-700 dark:hover:decoration-amber-500 transition-colors;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-5 pl-6;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose li {
+  @apply mb-1.5;
+}
+
+.prose blockquote {
+  @apply border-l-2 border-stone-300 dark:border-stone-600 pl-4 italic text-stone-500 dark:text-stone-400 my-6;
+}
+
+.prose code {
+  @apply bg-stone-100 dark:bg-stone-800 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-stone-100 dark:bg-stone-800 p-4 rounded-lg overflow-x-auto mb-5;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose hr {
+  @apply border-stone-200 dark:border-stone-700 my-10;
+}
+
+.prose strong {
+  @apply text-stone-900 dark:text-stone-100 font-medium;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+}
