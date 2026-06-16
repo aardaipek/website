@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { getAllPosts } from '@/lib/writing'
 import type { Metadata } from 'next'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Writing',
   description: 'Thoughts on software, investment, and life.',

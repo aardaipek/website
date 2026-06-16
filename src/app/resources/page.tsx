@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { getAllNotionResources } from '@/lib/notion'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Resources',
   description: 'Newsletters, podcasts, and tools I follow.',

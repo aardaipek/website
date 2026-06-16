@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/writing'
 
+export const revalidate = 60
+
 const socials = [
   { name: 'GitHub', href: 'https://github.com/aardaipek' },
   { name: 'LinkedIn', href: 'https://linkedin.com/in/ardaipek' },

@@ -3,6 +3,8 @@ import { getPostBySlug, getAllPosts } from '@/lib/writing'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { Metadata } from 'next'
 
+export const revalidate = 60
+
 type Props = {
   params: Promise<{ slug: string }>
 }

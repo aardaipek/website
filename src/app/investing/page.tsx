@@ -2,6 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getPostsByCategory } from '@/lib/writing'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Investing',
   description: 'Market notes, portfolio thoughts, and investment journal.',
