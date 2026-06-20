@@ -19,9 +19,9 @@ export default function AboutPage() {
 
         <p>
           I started by turning Figma designs into HTML and CSS. Then I moved to
-          Angular, built a few web apps, and eventually realized the interesting
-          problems were happening behind the screen &mdash; data, APIs, system
-          design, scale. That&apos;s how I became a backend developer.
+          Angular, built a few web apps, and eventually found myself drawn to
+          both sides of the stack &mdash; building interfaces that feel right
+          and systems that scale.
         </p>
 
         <p>
@@ -39,8 +39,10 @@ export default function AboutPage() {
           <strong className="text-stone-900 dark:text-stone-100 font-medium">
             Prisync
           </strong>
-          , I&apos;m deep in the product &mdash; building the backend that
-          powers competitive pricing intelligence.
+          , I work as a Senior Full-Stack Developer &mdash; building both
+          the backend (Node.js, NestJS, PostgreSQL, Redis, BullMQ, RabbitMQ,
+          AWS ECS/EC2) and the frontend (React, Vite, Redux) that powers
+          competitive pricing intelligence.
         </p>
 
         <p>
@@ -73,8 +75,8 @@ export default function AboutPage() {
         </h2>
         <div className="space-y-3 text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
           <p>
-            Working at Prisync on backend systems with Node.js (NestJS,
-            Express).
+            Working at Prisync as a Senior Full-Stack Developer &mdash;
+            Node.js, React, AWS, and everything in between.
           </p>
           <p>
             Running{' '}

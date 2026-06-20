@@ -23,6 +23,7 @@ export function Footer() {
               </a>
             ))}
           </div>
+          <p>🤍 Sumy</p>
         </div>
       </div>
     </footer>
