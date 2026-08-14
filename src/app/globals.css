@@ -72,6 +72,26 @@
   @apply text-stone-900 dark:text-stone-100 font-medium;
 }
 
+.prose table {
+  @apply w-full my-6 text-sm border-collapse;
+}
+
+.prose thead {
+  @apply border-b border-stone-300 dark:border-stone-600;
+}
+
+.prose th {
+  @apply text-left font-medium text-stone-900 dark:text-stone-100 py-2 px-3;
+}
+
+.prose td {
+  @apply py-2 px-3 border-b border-stone-200 dark:border-stone-800 align-top;
+}
+
+.prose tbody tr:last-child td {
+  @apply border-b-0;
+}
+
 @keyframes wave {
   0%,
   100% {

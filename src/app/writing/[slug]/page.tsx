@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getAllPosts } from '@/lib/writing'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import type { Metadata } from 'next'
 
 export const revalidate = 60
@@ -51,7 +52,10 @@ export default async function PostPage({ params }: Props) {
         </div>
       </header>
       <div className="prose">
-        <MDXRemote source={post.content} />
+        <MDXRemote
+          source={post.content}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </div>
     </article>
   )
