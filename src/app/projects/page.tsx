@@ -1,28 +1,10 @@
 import type { Metadata } from 'next'
+import { projects } from '@/lib/projects'
 
 export const metadata: Metadata = {
   title: 'Projects',
   description: 'Things I build and contribute to.',
 }
-
-const projects = [
-  {
-    name: 'Galata Finance',
-    description:
-      'A personal finance and investment research tool. Tracking portfolios, analyzing markets, and making better long-term decisions.',
-    tags: ['Finance', 'Side Project'],
-    link: 'https://galatafinance.com',
-    live: true,
-  },
-  {
-    name: 'ardaipek.vercel.app',
-    description:
-      'This website. A personal space for writing, projects, and sharing what I learn. Built with Next.js, MDX, and Tailwind CSS.',
-    tags: ['Personal', 'Open Source'],
-    link: 'https://ardaipek.vercel.app',
-    live: true,
-  },
-]
 
 export default function ProjectsPage() {
   return (

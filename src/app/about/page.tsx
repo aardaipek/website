@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -9,6 +10,17 @@ export default function AboutPage() {
   return (
     <div>
       <h1 className="font-serif text-3xl mb-8">About</h1>
+
+      <div className="relative w-full aspect-[3/2] rounded-xl overflow-hidden mb-10 bg-stone-200 dark:bg-stone-800">
+        <Image
+          src="/arda.jpg"
+          alt="Arda Ipek"
+          fill
+          priority
+          sizes="(max-width: 672px) 100vw, 624px"
+          className="object-cover object-[center_38%]"
+        />
+      </div>
 
       <div className="space-y-5 text-stone-600 dark:text-stone-400 leading-relaxed">
         <p>

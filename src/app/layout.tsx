@@ -16,7 +16,7 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ardaipek.vercel.app'),
+  metadataBase: new URL('https://ardaipek.net'),
   title: {
     default: 'Arda Ipek',
     template: '%s | Arda Ipek',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Arda Ipek',
     description: 'Backend developer, investor, researcher, cyclist.',
-    url: 'https://ardaipek.vercel.app',
+    url: 'https://ardaipek.net',
     siteName: 'Arda Ipek',
     locale: 'tr_TR',
     type: 'website',
