@@ -1,15 +1,27 @@
 import Link from 'next/link'
-import { getAllPosts } from '@/lib/writing'
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { getAllPosts } from '@/lib/writing'
+import { formatDate } from '@/lib/format'
+import { isLocale, localizePath } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+import { pageMetadata } from '@/i18n/metadata'
 
 export const revalidate = 60
 
-export const metadata: Metadata = {
-  title: 'Writing',
-  description: 'Thoughts on software, investment, and life.',
+type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  if (!isLocale(locale)) return {}
+  const { title, description } = getDictionary(locale).writing
+  return pageMetadata(locale, '/writing', { title, description })
 }
 
-export default async function WritingPage() {
+export default async function WritingPage({ params }: Props) {
+  const { locale } = await params
+  if (!isLocale(locale)) notFound()
+  const t = getDictionary(locale).writing
   const posts = await getAllPosts()
 
   const postsByYear: Record<string, typeof posts> = {}
@@ -21,10 +33,8 @@ export default async function WritingPage() {
 
   return (
     <div>
-      <h1 className="font-serif text-3xl mb-2">Writing</h1>
-      <p className="text-stone-500 dark:text-stone-400 mb-12">
-        Thoughts on software, investment, and life.
-      </p>
+      <h1 className="font-serif text-3xl mb-2">{t.title}</h1>
+      <p className="text-stone-500 dark:text-stone-400 mb-12">{t.description}</p>
 
       {Object.entries(postsByYear)
         .sort(([a], [b]) => Number(b) - Number(a))
@@ -37,7 +47,7 @@ export default async function WritingPage() {
               {yearPosts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/writing/${post.slug}`}
+                  href={localizePath(locale, `/writing/${post.slug}`)}
                   className="group block"
                 >
                   <div className="flex items-baseline justify-between gap-4">
@@ -45,37 +55,30 @@ export default async function WritingPage() {
                       {post.title}
                     </h3>
                     <div className="flex items-center gap-3 shrink-0">
-                      {post.category && (
+                      {post.category ? (
                         <span className="text-xs text-stone-400 dark:text-stone-500">
                           {post.category}
                         </span>
-                      )}
+                      ) : null}
                       <span className="text-sm text-stone-400 dark:text-stone-500 tabular-nums">
-                        {formatDate(post.date)}
+                        {formatDate(post.date, locale, { month: 'short', day: 'numeric' })}
                       </span>
                     </div>
                   </div>
-                  {post.summary && (
+                  {post.summary ? (
                     <p className="text-sm text-stone-500 dark:text-stone-400 mt-1">
                       {post.summary}
                     </p>
-                  )}
+                  ) : null}
                 </Link>
               ))}
             </div>
           </section>
         ))}
 
-      {posts.length === 0 && (
-        <p className="text-stone-400 dark:text-stone-500">Coming soon.</p>
-      )}
+      {posts.length === 0 ? (
+        <p className="text-stone-400 dark:text-stone-500">{t.empty}</p>
+      ) : null}
     </div>
   )
-}
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('tr-TR', {
-    month: 'short',
-    day: 'numeric',
-  })
 }

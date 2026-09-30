@@ -3,7 +3,7 @@
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
-export function ThemeToggle() {
+export function ThemeToggle({ label }: { label: string }) {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
@@ -15,7 +15,7 @@ export function ThemeToggle() {
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-      aria-label="Toggle theme"
+      aria-label={label}
     >
       {theme === 'dark' ? (
         <svg

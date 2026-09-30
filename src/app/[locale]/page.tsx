@@ -1,6 +1,15 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { getAllPosts } from '@/lib/writing'
-import { featuredProject, otherProjects } from '@/lib/projects'
+import { getProjects } from '@/lib/projects'
+import { formatDate } from '@/lib/format'
+import { StatusBadge } from '@/components/status-badge'
+import { TagList } from '@/components/tag-list'
+import { TransitionLink } from '@/components/transition-link'
+import { isLocale, localizePath } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+import { pageMetadata } from '@/i18n/metadata'
 
 export const revalidate = 60
 
@@ -12,42 +21,46 @@ const socials = [
   { name: 'Mail', href: 'mailto:ardaipek66@gmail.com' },
 ]
 
-const interests = [
-  {
-    label: 'Investing',
-    description: 'Long-term thinking, market research, portfolio management',
-    link: '/investing',
-  },
-  {
-    label: 'Writing',
-    description: 'Software, finance, personal notes',
-    link: '/writing',
-  },
-  {
-    label: 'Reading',
-    description: 'Finance, psychology, business, engineering',
-    link: '/bookshelf',
-  },
-]
+type Props = { params: Promise<{ locale: string }> }
 
-export default async function Home() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  if (!isLocale(locale)) return {}
+  return pageMetadata(locale, '/', {
+    description: getDictionary(locale).meta.description,
+  })
+}
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params
+  if (!isLocale(locale)) notFound()
+  const { home: t, projects: pt } = getDictionary(locale)
+
   const posts = (await getAllPosts()).slice(0, 3)
+  const projects = getProjects(locale)
+  const featured = projects.find((p) => p.featured)
+  const others = projects.filter((p) => !p.featured && p.slug !== 'ardaipek-net')
+  const projectHref = (slug: string) => localizePath(locale, `/projects/${slug}`)
+
+  const interests = [
+    { ...t.interests.investing, link: localizePath(locale, '/investing') },
+    { ...t.interests.writing, link: localizePath(locale, '/writing') },
+    { ...t.interests.reading, link: localizePath(locale, '/bookshelf') },
+  ]
 
   return (
     <div>
       {/* Intro — personality first */}
       <section className="mb-20">
         <h1 className="font-serif text-4xl mb-6">
-          Hey, I&apos;m Arda{' '}
-          <span className="inline-block animate-[wave_2s_ease-in-out_infinite] origin-[70%_70%]">
+          {t.greeting}{' '}
+          <span className="inline-block animate-[wave_2s_ease-in-out_infinite] motion-reduce:animate-none origin-[70%_70%]">
             &#x270B;
           </span>
         </h1>
         <div className="space-y-4 text-stone-600 dark:text-stone-400 leading-relaxed">
           <p>
-            I&apos;m a software developer based in Istanbul. I build backend
-            systems during the day and research markets at night. Right now
-            most of that energy goes into{' '}
+            {t.introBeforeLink}
             <a
               href="https://galatafinance.com"
               target="_blank"
@@ -56,104 +69,92 @@ export default async function Home() {
             >
               Galata Finance
             </a>
-            , the investing tool I&apos;m building on my own.
+            {t.introAfterLink}
           </p>
-          <p>
-            This is my corner of the internet &mdash; a place where I share what
-            I&apos;m building, what I&apos;m learning, and what I&apos;m
-            thinking about. No algorithm, no feed. Just me.
-          </p>
+          <p>{t.introSecond}</p>
         </div>
       </section>
 
       {/* Building — featured project first */}
-      {featuredProject && (
+      {featured ? (
         <section className="mb-20">
           <h2 className="text-sm font-medium text-stone-400 dark:text-stone-500 uppercase tracking-wider mb-6">
-            Building
+            {t.building}
           </h2>
 
-          <a
-            href={featuredProject.link}
-            target="_blank"
-            rel="noopener noreferrer"
+          <TransitionLink
+            href={projectHref(featured.slug)}
+            direction="nav-forward"
             className="group block rounded-xl border border-stone-200 dark:border-stone-800 bg-white/70 dark:bg-stone-900/40 p-6 hover:border-amber-700/40 dark:hover:border-amber-500/40 transition-colors"
           >
             <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <h3 className="font-serif text-2xl text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-500 transition-colors">
-                  {featuredProject.name}
-                </h3>
-                {featuredProject.live && (
-                  <span className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                    </span>
-                    Live
-                  </span>
-                )}
-              </div>
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 text-sm">
-                &#8599;
-              </span>
+              <h3 className="font-serif text-2xl text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-500 transition-colors">
+                {featured.name}
+              </h3>
+              <StatusBadge status={featured.status} label={pt.status[featured.status]} />
             </div>
-
             <p className="text-sm text-stone-600 dark:text-stone-400 mt-3 leading-relaxed">
-              {featuredProject.description}
+              {featured.tagline}
             </p>
-
-            <div className="flex flex-wrap gap-2 mt-4">
-              {featuredProject.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs text-stone-400 dark:text-stone-500 border border-stone-200 dark:border-stone-800 rounded-full px-2.5 py-0.5"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </a>
-
-          {otherProjects.length > 0 && (
             <div className="mt-4">
-              {otherProjects.map((project) => (
-                <a
-                  key={project.name}
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 py-2.5 px-3 -mx-3 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors"
-                >
-                  <span className="text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-500 transition-colors shrink-0">
-                    {project.name}
+              <TagList tags={featured.platforms} />
+            </div>
+          </TransitionLink>
+
+          <ul className="mt-4">
+            {others.map((project) => {
+              const row = (
+                <>
+                  <span className="flex items-center gap-3 shrink-0">
+                    <span className="text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-500 transition-colors">
+                      {project.name}
+                    </span>
+                    <StatusBadge status={project.status} label={pt.status[project.status]} />
                   </span>
                   <span className="text-sm text-stone-500 dark:text-stone-400 sm:text-right">
                     {project.tagline}
                   </span>
-                </a>
-              ))}
-            </div>
-          )}
+                </>
+              )
+              const rowClass =
+                'group flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6 py-2.5 px-3 -mx-3 rounded-lg'
+
+              return (
+                <li key={project.slug}>
+                  {project.detail ? (
+                    <TransitionLink
+                      href={projectHref(project.slug)}
+                      direction="nav-forward"
+                      className={`${rowClass} hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors`}
+                    >
+                      {row}
+                    </TransitionLink>
+                  ) : (
+                    <div className={rowClass}>{row}</div>
+                  )}
+                </li>
+              )
+            })}
+          </ul>
 
           <Link
-            href="/projects"
+            href={localizePath(locale, '/projects')}
             className="inline-block mt-6 text-sm text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
           >
-            All projects &rarr;
+            {t.allProjects} &rarr;
           </Link>
         </section>
-      )}
+      ) : null}
 
       {/* What I'm into */}
       <section className="mb-20">
         <h2 className="text-sm font-medium text-stone-400 dark:text-stone-500 uppercase tracking-wider mb-6">
-          What I&apos;m into
+          {t.into}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {interests.map(({ label, description, link }) => (
             <Link
-              key={label}
+              key={link}
               href={link}
               className="group block p-4 -m-4 sm:m-0 sm:p-4 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors"
             >
@@ -169,16 +170,16 @@ export default async function Home() {
       </section>
 
       {/* Recent writing */}
-      {posts.length > 0 && (
+      {posts.length > 0 ? (
         <section className="mb-20">
           <h2 className="text-sm font-medium text-stone-400 dark:text-stone-500 uppercase tracking-wider mb-6">
-            Recently written
+            {t.recentlyWritten}
           </h2>
           <div className="space-y-4">
             {posts.map((post) => (
               <Link
                 key={post.slug}
-                href={`/writing/${post.slug}`}
+                href={localizePath(locale, `/writing/${post.slug}`)}
                 className="group block"
               >
                 <div className="flex items-baseline justify-between gap-4">
@@ -186,30 +187,30 @@ export default async function Home() {
                     {post.title}
                   </h3>
                   <span className="text-sm text-stone-400 dark:text-stone-500 shrink-0 tabular-nums">
-                    {formatDate(post.date)}
+                    {formatDate(post.date, locale, { month: 'short', day: 'numeric' })}
                   </span>
                 </div>
-                {post.summary && (
+                {post.summary ? (
                   <p className="text-sm text-stone-500 dark:text-stone-400 mt-1">
                     {post.summary}
                   </p>
-                )}
+                ) : null}
               </Link>
             ))}
           </div>
           <Link
-            href="/writing"
+            href={localizePath(locale, '/writing')}
             className="inline-block mt-6 text-sm text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
           >
-            All posts &rarr;
+            {t.allPosts} &rarr;
           </Link>
         </section>
-      )}
+      ) : null}
 
       {/* Connect */}
       <section>
         <h2 className="text-sm font-medium text-stone-400 dark:text-stone-500 uppercase tracking-wider mb-6">
-          Elsewhere
+          {t.elsewhere}
         </h2>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {socials.map(({ name, href }) => (
@@ -227,11 +228,4 @@ export default async function Home() {
       </section>
     </div>
   )
-}
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('tr-TR', {
-    month: 'short',
-    day: 'numeric',
-  })
 }

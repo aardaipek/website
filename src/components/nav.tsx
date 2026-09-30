@@ -4,17 +4,15 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { ThemeToggle } from './theme-toggle'
+import { LanguageSwitch } from './language-switch'
 
-const links = [
-  { href: '/writing', label: 'Writing' },
-  { href: '/investing', label: 'Investing' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/bookshelf', label: 'Bookshelf' },
-  { href: '/resources', label: 'Resources' },
-  { href: '/about', label: 'About' },
-]
+type Props = {
+  homeHref: string
+  links: { href: string; label: string }[]
+  labels: { toggleMenu: string; toggleTheme: string; language: string }
+}
 
-export function Nav() {
+export function Nav({ homeHref, links, labels }: Props) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
@@ -29,7 +27,7 @@ export function Nav() {
     <nav className="w-full max-w-2xl mx-auto px-6 pt-8">
       <div className="flex items-center justify-between">
         <Link
-          href="/"
+          href={homeHref}
           className="font-serif text-xl text-stone-900 dark:text-stone-100 hover:text-amber-700 dark:hover:text-amber-500 transition-colors"
         >
           arda ipek
@@ -42,16 +40,19 @@ export function Nav() {
               {label}
             </Link>
           ))}
-          <ThemeToggle />
+          <LanguageSwitch label={labels.language} />
+          <ThemeToggle label={labels.toggleTheme} />
         </div>
 
         {/* Mobile toggle */}
         <div className="flex items-center gap-4 md:hidden">
-          <ThemeToggle />
+          <LanguageSwitch label={labels.language} />
+          <ThemeToggle label={labels.toggleTheme} />
           <button
-            onClick={() => setOpen(!open)}
+            onClick={() => setOpen((o) => !o)}
             className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-            aria-label="Toggle menu"
+            aria-label={labels.toggleMenu}
+            aria-expanded={open}
           >
             <svg
               width="20"

@@ -1,24 +1,32 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { getAllNotionResources } from '@/lib/notion'
+import { isLocale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+import { pageMetadata } from '@/i18n/metadata'
 
 export const revalidate = 60
 
-export const metadata: Metadata = {
-  title: 'Resources',
-  description: 'Newsletters, podcasts, and tools I follow.',
+type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  if (!isLocale(locale)) return {}
+  const { title, description } = getDictionary(locale).resources
+  return pageMetadata(locale, '/resources', { title, description })
 }
 
-export default async function ResourcesPage() {
+export default async function ResourcesPage({ params }: Props) {
+  const { locale } = await params
+  if (!isLocale(locale)) notFound()
+  const t = getDictionary(locale).resources
   const resources = await getAllNotionResources()
   const categories = [...new Set(resources.map((r) => r.category))]
 
   return (
     <div>
-      <h1 className="font-serif text-3xl mb-2">Resources</h1>
-      <p className="text-stone-500 dark:text-stone-400 mb-12">
-        Things I read, listen to, and use regularly. Updated as I discover new
-        ones.
-      </p>
+      <h1 className="font-serif text-3xl mb-2">{t.title}</h1>
+      <p className="text-stone-500 dark:text-stone-400 mb-12">{t.intro}</p>
 
       {categories.map((category) => (
         <section key={category} className="mb-12">
@@ -53,11 +61,9 @@ export default async function ResourcesPage() {
         </section>
       ))}
 
-      {categories.length === 0 && (
-        <p className="text-stone-400 dark:text-stone-500 text-sm">
-          Coming soon.
-        </p>
-      )}
+      {categories.length === 0 ? (
+        <p className="text-stone-400 dark:text-stone-500 text-sm">{t.empty}</p>
+      ) : null}
     </div>
   )
 }
