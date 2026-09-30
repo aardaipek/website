@@ -9,12 +9,15 @@ export function ThemeToggle({ label }: { label: string }) {
 
   useEffect(() => setMounted(true), [])
 
-  if (!mounted) return <div className="w-[18px] h-[18px]" />
+  const className =
+    'inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:border-stone-300 dark:hover:border-stone-700 transition-colors [&>svg]:h-[15px] [&>svg]:w-[15px]'
+
+  if (!mounted) return <div className={className} aria-hidden />
 
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+      className={className}
       aria-label={label}
     >
       {theme === 'dark' ? (

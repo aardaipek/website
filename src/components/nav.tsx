@@ -28,29 +28,34 @@ export function Nav({ homeHref, links, labels }: Props) {
       <div className="flex items-center justify-between">
         <Link
           href={homeHref}
-          className="font-serif text-xl text-stone-900 dark:text-stone-100 hover:text-amber-700 dark:hover:text-amber-500 transition-colors"
+          className="shrink-0 whitespace-nowrap font-serif text-xl text-stone-900 dark:text-stone-100 hover:text-amber-700 dark:hover:text-amber-500 transition-colors"
         >
           arda ipek
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-5">
-          {links.map(({ href, label }) => (
-            <Link key={href} href={href} className={`text-sm ${linkClass(href)}`}>
-              {label}
-            </Link>
-          ))}
-          <LanguageSwitch label={labels.language} />
-          <ThemeToggle label={labels.toggleTheme} />
+        <div className="hidden md:flex items-center">
+          <div className="flex items-center gap-4">
+            {links.map(({ href, label }) => (
+              <Link key={href} href={href} className={`text-sm ${linkClass(href)}`}>
+                {label}
+              </Link>
+            ))}
+          </div>
+          {/* Controls sit apart from the links so they read as settings, not pages. */}
+          <div className="flex items-center gap-1.5 ml-4 pl-4 border-l border-stone-200 dark:border-stone-800">
+            <LanguageSwitch label={labels.language} />
+            <ThemeToggle label={labels.toggleTheme} />
+          </div>
         </div>
 
         {/* Mobile toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
           <LanguageSwitch label={labels.language} />
           <ThemeToggle label={labels.toggleTheme} />
           <button
             onClick={() => setOpen((o) => !o)}
-            className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+            className="ml-2 text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
             aria-label={labels.toggleMenu}
             aria-expanded={open}
           >

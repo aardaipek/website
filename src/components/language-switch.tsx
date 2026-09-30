@@ -16,28 +16,22 @@ export function LanguageSwitch({ label }: { label: string }) {
     <div
       role="group"
       aria-label={label}
-      className="flex items-center gap-1 text-xs font-medium"
+      className="inline-flex h-7 items-center rounded-full border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 p-0.5"
     >
-      {locales.map((locale, i) => (
-        <span key={locale} className="flex items-center gap-1">
-          {i > 0 ? (
-            <span aria-hidden className="text-stone-300 dark:text-stone-700">
-              /
-            </span>
-          ) : null}
-          <Link
-            href={localizePath(locale, path)}
-            hrefLang={locale}
-            aria-current={locale === current ? 'true' : undefined}
-            className={
-              locale === current
-                ? 'text-stone-900 dark:text-stone-100'
-                : 'text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors'
-            }
-          >
-            {localeLabels[locale]}
-          </Link>
-        </span>
+      {locales.map((locale) => (
+        <Link
+          key={locale}
+          href={localizePath(locale, path)}
+          hrefLang={locale}
+          aria-current={locale === current ? 'true' : undefined}
+          className={`flex h-full items-center rounded-full px-2 text-[11px] font-medium tracking-wide transition-colors ${
+            locale === current
+              ? 'bg-white text-stone-900 shadow-sm dark:bg-stone-700 dark:text-stone-100'
+              : 'text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100'
+          }`}
+        >
+          {localeLabels[locale]}
+        </Link>
       ))}
     </div>
   )
