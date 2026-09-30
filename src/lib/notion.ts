@@ -5,8 +5,10 @@ import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoint
 const notion = new Client({ auth: process.env.NOTION_TOKEN })
 const n2m = new NotionToMarkdown({ notionClient: notion })
 
-const databaseId = process.env.NOTION_DATABASE_ID!
+const databaseId = process.env.NOTION_DATABASE_ID
 const resourcesDatabaseId = process.env.NOTION_RESOURCES_DATABASE_ID
+/** Without credentials (e.g. a fresh local checkout) Notion content is empty instead of failing the build. */
+const hasNotion = Boolean(process.env.NOTION_TOKEN)
 
 export type NotionPost = {
   slug: string
@@ -42,6 +44,8 @@ function getProperty(page: PageObjectResponse, name: string) {
 }
 
 export async function getAllNotionPosts(): Promise<NotionPost[]> {
+  if (!hasNotion || !databaseId) return []
+
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
@@ -73,6 +77,8 @@ export async function getAllNotionPosts(): Promise<NotionPost[]> {
 export async function getNotionPostsByCategory(
   category: string
 ): Promise<NotionPost[]> {
+  if (!hasNotion || !databaseId) return []
+
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
@@ -114,7 +120,7 @@ export type NotionResource = {
 }
 
 export async function getAllNotionResources(): Promise<NotionResource[]> {
-  if (!resourcesDatabaseId) return []
+  if (!hasNotion || !resourcesDatabaseId) return []
 
   const response = await notion.databases.query({
     database_id: resourcesDatabaseId,
@@ -145,6 +151,8 @@ export async function getAllNotionResources(): Promise<NotionResource[]> {
 export async function getNotionPostBySlug(
   slug: string
 ): Promise<NotionPost | null> {
+  if (!hasNotion || !databaseId) return null
+
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
