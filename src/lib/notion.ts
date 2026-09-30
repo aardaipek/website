@@ -1,8 +1,27 @@
+import { cache } from 'react'
 import { Client } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
 import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-const notion = new Client({ auth: process.env.NOTION_TOKEN })
+const MAX_RETRIES = 4
+
+/**
+ * Notion allows ~3 requests/s. A static build renders every post in both
+ * locales in parallel, so wait out 429s (honouring Retry-After) instead of
+ * failing the build.
+ */
+const fetchWithRetry: typeof fetch = async (input, init) => {
+  for (let attempt = 0; ; attempt++) {
+    const response = await fetch(input, init)
+    if (response.status !== 429 || attempt >= MAX_RETRIES) return response
+
+    const retryAfter = Number(response.headers.get('retry-after'))
+    const seconds = retryAfter > 0 ? retryAfter : 2 ** attempt
+    await new Promise((resolve) => setTimeout(resolve, seconds * 1000))
+  }
+}
+
+const notion = new Client({ auth: process.env.NOTION_TOKEN, fetch: fetchWithRetry })
 const n2m = new NotionToMarkdown({ notionClient: notion })
 
 const databaseId = process.env.NOTION_DATABASE_ID
@@ -148,7 +167,8 @@ export async function getAllNotionResources(): Promise<NotionResource[]> {
   return resources
 }
 
-export async function getNotionPostBySlug(
+/** Cached per request: generateMetadata and the page share one Notion fetch. */
+export const getNotionPostBySlug = cache(async function getNotionPostBySlug(
   slug: string
 ): Promise<NotionPost | null> {
   if (!hasNotion || !databaseId) return null
@@ -178,4 +198,4 @@ export async function getNotionPostBySlug(
     category: getProperty(p, 'Category') as string,
     content: mdString.parent,
   }
-}
+})
