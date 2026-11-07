@@ -168,10 +168,47 @@ const sources: ProjectSource[] = [
     platforms: ['iOS'],
     startedAt: '2026-09',
     tagline: {
-      en: 'A playful iPhone app about your chats. Launching very soon.',
-      tr: 'Sohbetlerin hakkında eğlenceli bir iPhone uygulaması. Çok yakında.',
+      en: 'Chat Wrapped for iPhone: turns a WhatsApp chat into a receipt you can share.',
+      tr: 'iPhone için Chat Wrapped: bir WhatsApp sohbetini paylaşılabilir bir fişe çeviriyor.',
+    },
+    links: [{ kind: 'website', href: 'https://hiroo-studio.vercel.app/en/apps/receipts' }],
+    stack: ['SwiftUI', 'RevenueCat', 'TypeScript', 'Vercel', 'AI Gateway'],
+    detail: {
+      intro: [
+        {
+          en: 'Receipts reads an exported WhatsApp chat and prints what happened in it as a receipt: who texts first, who replies faster, who ghosts, flirt scores, red and green flags and a verdict. In group chats everyone gets a role and an award.',
+          tr: 'Receipts, dışa aktarılmış bir WhatsApp sohbetini okuyup içinde olanları bir fiş olarak basıyor: kim önce yazıyor, kim daha hızlı cevap veriyor, kim ghostluyor, flört skorları, kırmızı ve yeşil bayraklar ve bir hüküm. Grup sohbetlerinde herkese bir rol ve bir ödül çıkıyor.',
+        },
+        {
+          en: 'I built it around one rule: the chat stays on the phone. Every stat is calculated on the iPhone. The optional AI cards run only with permission, on a sample where names are replaced by codes and contact details are removed.',
+          tr: 'Uygulamayı tek bir kural etrafında kurdum: sohbet telefonda kalır. Tüm istatistikler iPhone’da hesaplanıyor. İsteğe bağlı AI kartları yalnızca izinle, isimlerin kodlandığı ve iletişim bilgilerinin silindiği bir örnek üzerinde çalışıyor.',
+        },
+      ],
+      highlights: [
+        {
+          en: '9:16 story cards to share the verdict, flirt score or group roles',
+          tr: 'Hükmü, flört skorunu ya da grup rollerini paylaşmak için 9:16 story kartları',
+        },
+        {
+          en: 'Works with one-on-one and group chats',
+          tr: 'Birebir ve grup sohbetlerinde çalışıyor',
+        },
+        {
+          en: 'Available in English, Turkish, Portuguese and Spanish',
+          tr: 'İngilizce, Türkçe, Portekizce ve İspanyolca',
+        },
+        {
+          en: 'Free preview, a one-time chat unlock or a subscription',
+          tr: 'Ücretsiz önizleme, tek seferlik sohbet kilidi ya da abonelik',
+        },
+      ],
+      now: {
+        en: 'Launching soon on the App Store for iPhone.',
+        tr: 'Çok yakında iPhone için App Store’da.',
+      },
     },
   },
+
   {
     slug: 'find-best-scooter',
     name: 'Find Best Scooter',
