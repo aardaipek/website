@@ -2,7 +2,7 @@ import type { Locale } from '@/i18n/config'
 
 type Localized = Record<Locale, string>
 
-export type ProjectStatus = 'live' | 'soon' | 'building'
+export type ProjectStatus = 'live' | 'soon' | 'building' | 'paused'
 export type Platform = 'Web' | 'iOS' | 'macOS'
 export type ProjectLinkKind = 'website' | 'webApp' | 'appStore' | 'macAppStore'
 
@@ -33,12 +33,153 @@ export type Project = Omit<ProjectSource, 'tagline' | 'detail'> & {
 
 const sources: ProjectSource[] = [
   {
+    slug: 'hiroo-studio',
+    name: 'Hiroo Studio',
+    status: 'live',
+    platforms: ['Web', 'iOS', 'macOS'],
+    startedAt: '2026-10',
+    featured: true,
+    tagline: {
+      en: 'My independent product studio — one engineer and a team of AI agents, shipping AI-powered apps for iPhone, Mac and the web.',
+      tr: 'Bağımsız ürün stüdyom — bir mühendis ve bir AI ajan ekibi; iPhone, Mac ve web için AI destekli uygulamalar.',
+    },
+    links: [{ kind: 'website', href: 'https://hiroo-studio.vercel.app' }],
+    stack: ['Claude Code', 'Codex', 'MCP', 'AI Gateway', 'Next.js', 'SwiftUI'],
+    detail: {
+      intro: [
+        {
+          en: 'Hiroo Studio is my independent product studio. Every product I build on my own lives here — iOS and macOS apps, web tools and their landing pages — and this is where I decide what to build next, what to pause and what to close.',
+          tr: 'Hiroo Studio, bağımsız ürün stüdyom. Kendi geliştirdiğim bütün ürünler burada yaşıyor — iOS ve macOS uygulamaları, web araçları ve landing sayfaları — neyi geliştireceğime, neyi bekleteceğime ve neyi kapatacağıma da burada karar veriyorum.',
+        },
+        {
+          en: 'The studio runs on agentic engineering. I own the product decisions, the architecture and the final review; AI coding agents such as Claude Code and Codex do much of the implementation, testing and documentation with me under one shared set of studio rules. Every project keeps a living overview that the agents read before they start and update when they finish.',
+          tr: 'Stüdyo agentic engineering ile çalışıyor. Ürün kararları, mimari ve son kontrol bende; Claude Code ve Codex gibi AI kodlama ajanları, ortak stüdyo kurallarıyla uygulamanın, testlerin ve dokümantasyonun büyük kısmını benimle birlikte yazıyor. Her projenin, ajanların işe başlamadan okuduğu ve iş bitince güncellediği yaşayan bir özet belgesi var.',
+        },
+      ],
+      highlights: [
+        {
+          en: 'Agentic engineering: AI agents implement, test and document; I design, decide and review',
+          tr: 'Agentic engineering: AI ajanlar uyguluyor, test ediyor ve belgeliyor; ben tasarlıyor, karar veriyor ve kontrol ediyorum',
+        },
+        {
+          en: 'AI inside the products: AI chat analysis in Receipts, an MCP server that brings Etsy shops into Claude in Shopthread',
+          tr: 'Ürünlerin içinde AI: Receipts’te AI ile sohbet analizi, Shopthread’de Etsy mağazalarını Claude’a bağlayan MCP sunucusu',
+        },
+        {
+          en: 'Shipped on the App Store and the Mac App Store: Galata Finance and Place Timer',
+          tr: 'App Store ve Mac App Store’da yayında: Galata Finance ve Place Timer',
+        },
+        {
+          en: 'One studio site for every product page, landing, support and privacy page',
+          tr: 'Tüm ürün, landing, destek ve gizlilik sayfaları için tek stüdyo sitesi',
+        },
+      ],
+      now: {
+        en: 'The current focus is launching Receipts. Shopthread is in early access; Galata Finance and Place Timer are live.',
+        tr: 'Şu anki odak Receipts lansmanı. Shopthread erken erişimde; Galata Finance ve Place Timer yayında.',
+      },
+    },
+  },
+  {
+    slug: 'receipts',
+    name: 'Receipts',
+    status: 'soon',
+    platforms: ['iOS'],
+    startedAt: '2026-09',
+    tagline: {
+      en: 'AI-powered Chat Wrapped for iPhone: turns a WhatsApp chat into a receipt you can share.',
+      tr: 'iPhone için AI destekli Chat Wrapped: bir WhatsApp sohbetini paylaşılabilir bir fişe çeviriyor.',
+    },
+    links: [{ kind: 'website', href: 'https://hiroo-studio.vercel.app/en/apps/receipts' }],
+    stack: ['SwiftUI', 'RevenueCat', 'TypeScript', 'Vercel', 'AI Gateway', 'Claude'],
+    detail: {
+      intro: [
+        {
+          en: 'Receipts reads an exported WhatsApp chat and prints what happened in it as a receipt: who texts first, who replies faster, who ghosts, flirt scores, red and green flags and a verdict. In group chats everyone gets a role and an award.',
+          tr: 'Receipts, dışa aktarılmış bir WhatsApp sohbetini okuyup içinde olanları bir fiş olarak basıyor: kim önce yazıyor, kim daha hızlı cevap veriyor, kim ghostluyor, flört skorları, kırmızı ve yeşil bayraklar ve bir hüküm. Grup sohbetlerinde herkese bir rol ve bir ödül çıkıyor.',
+        },
+        {
+          en: 'I built it around one rule: the chat stays on the phone. Every stat is calculated on the iPhone. The optional AI cards run only with permission, on a sample where names are replaced by codes and contact details are removed.',
+          tr: 'Uygulamayı tek bir kural etrafında kurdum: sohbet telefonda kalır. Tüm istatistikler iPhone’da hesaplanıyor. İsteğe bağlı AI kartları yalnızca izinle, isimlerin kodlandığı ve iletişim bilgilerinin silindiği bir örnek üzerinde çalışıyor.',
+        },
+      ],
+      highlights: [
+        {
+          en: '9:16 story cards to share the verdict, flirt score or group roles',
+          tr: 'Hükmü, flört skorunu ya da grup rollerini paylaşmak için 9:16 story kartları',
+        },
+        {
+          en: 'Works with one-on-one and group chats',
+          tr: 'Birebir ve grup sohbetlerinde çalışıyor',
+        },
+        {
+          en: 'Available in English, Turkish, Portuguese and Spanish',
+          tr: 'İngilizce, Türkçe, Portekizce ve İspanyolca',
+        },
+        {
+          en: 'Free preview, a one-time chat unlock or a subscription',
+          tr: 'Ücretsiz önizleme, tek seferlik sohbet kilidi ya da abonelik',
+        },
+      ],
+      now: {
+        en: 'In App Review. It launches on the App Store for iPhone as soon as Apple approves it — the studio’s main focus right now.',
+        tr: 'App Review’da. Apple onaylar onaylamaz iPhone için App Store’da yayına çıkıyor — stüdyonun şu anki ana odağı.',
+      },
+    },
+  },
+  {
+    slug: 'shopthread',
+    name: 'Shopthread',
+    status: 'soon',
+    platforms: ['Web'],
+    startedAt: '2026-10',
+    tagline: {
+      en: 'Run an Etsy shop from Claude: listings, orders and AI-filled drafts over MCP.',
+      tr: 'Etsy mağazasını Claude’dan yönet: MCP üzerinden ilanlar, siparişler ve AI ile doldurulan taslaklar.',
+    },
+    links: [{ kind: 'website', href: 'https://hiroo-studio.vercel.app/shopthread/' }],
+    stack: ['MCP', 'TypeScript', 'Node.js', 'React', 'Vite', 'PostgreSQL', 'Drizzle', 'Railway', 'Vercel'],
+    detail: {
+      intro: [
+        {
+          en: 'Shopthread started with my wife’s Etsy shop. Opening and updating listings and keeping up with orders meant a lot of clicking through Etsy’s dashboard, so I connected the shop to Claude instead.',
+          tr: 'Shopthread eşimin Etsy mağazasıyla başladı. İlan açmak, güncellemek ve siparişleri takip etmek Etsy panelinde bolca tıklama demekti; ben de mağazayı Claude’a bağladım.',
+        },
+        {
+          en: 'It is a multi-shop Etsy connector with two faces: a web panel, and an MCP server that lets a seller simply ask Claude to draft a listing, update stock or check today’s orders. Every change is versioned and can be traced back.',
+          tr: 'İki yüzü olan, çok mağazalı bir Etsy bağlayıcısı: bir web paneli ve satıcının Claude’dan ilan taslağı hazırlamasını, stok güncellemesini ya da bugünkü siparişlere bakmasını isteyebildiği bir MCP sunucusu. Her değişiklik sürümlü ve geriye dönük izlenebilir.',
+        },
+      ],
+      highlights: [
+        {
+          en: 'An MCP server with around 30 tools for listings, inventory, orders, reviews and shop setup',
+          tr: 'İlanlar, stok, siparişler, yorumlar ve mağaza ayarları için 30’a yakın araçlı MCP sunucusu',
+        },
+        {
+          en: 'AI listing fill: start from a product photo and get a ready-to-edit draft',
+          tr: 'AI ile ilan doldurma: ürün fotoğrafından düzenlemeye hazır bir taslak',
+        },
+        {
+          en: 'CSV import for bulk listings, with product-type templates',
+          tr: 'Ürün tipi şablonlarıyla toplu ilan için CSV içe aktarma',
+        },
+        {
+          en: 'Multiple shops per account, with safe, versioned writes to Etsy',
+          tr: 'Hesap başına birden fazla mağaza; Etsy’ye güvenli, sürümlü yazma',
+        },
+      ],
+      now: {
+        en: 'MVP live with its first real Etsy shop. Early access is open on the Hiroo Studio site.',
+        tr: 'MVP ilk gerçek Etsy mağazasıyla canlıda. Erken erişim Hiroo Studio sitesinde açık.',
+      },
+    },
+  },
+  {
     slug: 'galata-finance',
     name: 'Galata Finance',
     status: 'live',
     platforms: ['Web', 'iOS'],
     startedAt: '2026-03',
-    featured: true,
     tagline: {
       en: 'Portfolio tracking and personal finance for Turkish investors — on the web and iPhone.',
       tr: 'Türk yatırımcılar için portföy takibi ve kişisel finans — web’de ve iPhone’da.',
@@ -56,6 +197,7 @@ const sources: ProjectSource[] = [
       'Prisma',
       'PostgreSQL',
       'Supabase',
+      'Redis',
       'React 19',
       'Vite',
       'TanStack Query',
@@ -65,8 +207,8 @@ const sources: ProjectSource[] = [
     detail: {
       intro: [
         {
-          en: 'Galata Finance started as a replacement for the spreadsheet I used to track my own portfolio. It is built for individual investors in Turkey who hold positions across BIST, US markets and gold, and who want one Turkish-first tool instead of juggling bank apps and spreadsheets.',
-          tr: 'Galata Finance, kendi portföyümü takip ettiğim tablonun yerine geçsin diye başladı. BIST’te, ABD piyasalarında ve altında pozisyon tutan, banka uygulamaları ile tablolar arasında gidip gelmek yerine Türkçe öncelikli tek bir araç isteyen bireysel yatırımcılar için geliştirildi.',
+          en: 'Galata Finance started as a replacement for the spreadsheet I used to track my own portfolio. It is built for individual investors in Turkey who hold positions across BIST, US markets, funds and gold, and who want one Turkish-first tool instead of juggling bank apps and spreadsheets.',
+          tr: 'Galata Finance, kendi portföyümü takip ettiğim tablonun yerine geçsin diye başladı. BIST’te, ABD piyasalarında, fonlarda ve altında pozisyon tutan, banka uygulamaları ile tablolar arasında gidip gelmek yerine Türkçe öncelikli tek bir araç isteyen bireysel yatırımcılar için geliştirildi.',
         },
         {
           en: 'The same account works in the web app and the native iOS app. Premium adds a weekly personal report that is recalculated from your own holdings every week.',
@@ -75,8 +217,12 @@ const sources: ProjectSource[] = [
       ],
       highlights: [
         {
-          en: 'Portfolio tracking for BIST and US equities with live prices',
-          tr: 'Canlı fiyatlarla BIST ve ABD hisseleri için portföy takibi',
+          en: 'Portfolio tracking for BIST and US equities and Turkish funds (TEFAS) with live prices',
+          tr: 'Canlı fiyatlarla BIST ve ABD hisseleri ile TEFAS fonları için portföy takibi',
+        },
+        {
+          en: 'Markets and stock detail pages with company financials from KAP',
+          tr: 'KAP finansallarıyla piyasalar ve hisse detay sayfaları',
         },
         {
           en: 'Gold and silver in every common form — gram, quarter, full, ounce, bar',
@@ -87,12 +233,8 @@ const sources: ProjectSource[] = [
           tr: 'Alım, satım ve DRIP işlem geçmişi, izleme listeleri',
         },
         {
-          en: 'TRY/USD cash balances, monthly income and expenses, budgets',
-          tr: 'TRY/USD nakit bakiyeleri, aylık gelir-gider ve bütçe',
-        },
-        {
-          en: 'Subscription and recurring payment tracking',
-          tr: 'Abonelik ve tekrarlayan ödeme takibi',
+          en: 'TRY/USD cash balances, monthly income and expenses, budgets and subscriptions',
+          tr: 'TRY/USD nakit bakiyeleri, aylık gelir-gider, bütçe ve abonelik takibi',
         },
         {
           en: 'Weekly personal report with Premium, two-week free trial',
@@ -100,8 +242,8 @@ const sources: ProjectSource[] = [
         },
       ],
       now: {
-        en: 'Live on the web and the App Store, with Premium subscriptions. Next up: deeper portfolio analytics, new asset types, insights and alerts.',
-        tr: 'Web’de ve App Store’da, Premium abonelikle birlikte yayında. Sırada daha derin portföy analitiği, yeni varlık tipleri, içgörüler ve uyarılar var.',
+        en: 'Live on the web and the App Store, with Premium subscriptions. Markets and KAP financials shipped in November 2026; version 1.1 for iPhone is in TestFlight.',
+        tr: 'Web’de ve App Store’da, Premium abonelikle birlikte yayında. Piyasalar ve KAP finansalları Kasım 2026’da yayına alındı; iPhone için 1.1 sürümü TestFlight’ta.',
       },
     },
   },
@@ -156,63 +298,26 @@ const sources: ProjectSource[] = [
         },
       ],
       now: {
-        en: 'Published on the Mac App Store. Requires macOS 26.',
-        tr: 'Mac App Store’da yayında. macOS 26 gerektiriyor.',
+        en: 'Version 1.1 is on the Mac App Store (requires macOS 26). A next version focused on more accurate measurement is planned.',
+        tr: '1.1 sürümü Mac App Store’da (macOS 26 gerektiriyor). Ölçüm doğruluğuna odaklanan bir sonraki sürüm planlanıyor.',
       },
     },
   },
   {
-    slug: 'receipts',
-    name: 'Receipts',
-    status: 'soon',
+    slug: 'mulk',
+    name: 'Mülk',
+    status: 'paused',
     platforms: ['iOS'],
-    startedAt: '2026-09',
+    startedAt: '2026-07',
     tagline: {
-      en: 'Chat Wrapped for iPhone: turns a WhatsApp chat into a receipt you can share.',
-      tr: 'iPhone için Chat Wrapped: bir WhatsApp sohbetini paylaşılabilir bir fişe çeviriyor.',
-    },
-    links: [{ kind: 'website', href: 'https://hiroo-studio.vercel.app/en/apps/receipts' }],
-    stack: ['SwiftUI', 'RevenueCat', 'TypeScript', 'Vercel', 'AI Gateway'],
-    detail: {
-      intro: [
-        {
-          en: 'Receipts reads an exported WhatsApp chat and prints what happened in it as a receipt: who texts first, who replies faster, who ghosts, flirt scores, red and green flags and a verdict. In group chats everyone gets a role and an award.',
-          tr: 'Receipts, dışa aktarılmış bir WhatsApp sohbetini okuyup içinde olanları bir fiş olarak basıyor: kim önce yazıyor, kim daha hızlı cevap veriyor, kim ghostluyor, flört skorları, kırmızı ve yeşil bayraklar ve bir hüküm. Grup sohbetlerinde herkese bir rol ve bir ödül çıkıyor.',
-        },
-        {
-          en: 'I built it around one rule: the chat stays on the phone. Every stat is calculated on the iPhone. The optional AI cards run only with permission, on a sample where names are replaced by codes and contact details are removed.',
-          tr: 'Uygulamayı tek bir kural etrafında kurdum: sohbet telefonda kalır. Tüm istatistikler iPhone’da hesaplanıyor. İsteğe bağlı AI kartları yalnızca izinle, isimlerin kodlandığı ve iletişim bilgilerinin silindiği bir örnek üzerinde çalışıyor.',
-        },
-      ],
-      highlights: [
-        {
-          en: '9:16 story cards to share the verdict, flirt score or group roles',
-          tr: 'Hükmü, flört skorunu ya da grup rollerini paylaşmak için 9:16 story kartları',
-        },
-        {
-          en: 'Works with one-on-one and group chats',
-          tr: 'Birebir ve grup sohbetlerinde çalışıyor',
-        },
-        {
-          en: 'Available in English, Turkish, Portuguese and Spanish',
-          tr: 'İngilizce, Türkçe, Portekizce ve İspanyolca',
-        },
-        {
-          en: 'Free preview, a one-time chat unlock or a subscription',
-          tr: 'Ücretsiz önizleme, tek seferlik sohbet kilidi ya da abonelik',
-        },
-      ],
-      now: {
-        en: 'Launching soon on the App Store for iPhone.',
-        tr: 'Çok yakında iPhone için App Store’da.',
-      },
+      en: 'A calm home for the property you own — rent, loans, maintenance and documents. In TestFlight.',
+      tr: 'Sahip olduğun mülkler için sakin bir yer — kira, kredi, bakım ve belgeler. TestFlight’ta.',
     },
   },
-
   {
     slug: 'find-best-scooter',
     name: 'Find Best Scooter',
-    status: 'building',
+    status: 'paused',
     platforms: ['Web'],
     startedAt: '2026-09',
     tagline: {
@@ -250,26 +355,15 @@ const sources: ProjectSource[] = [
         },
       ],
       now: {
-        en: 'In development. The first brands are in the catalogue; coverage and data collection are growing.',
-        tr: 'Geliştiriliyor. İlk markalar katalogda; kapsam ve veri toplama genişliyor.',
+        en: 'On hold while the studio focuses on Receipts. A 20-model catalogue and the data collector are built; the first public release is next when I pick it back up.',
+        tr: 'Stüdyo odağı Receipts’te olduğu için beklemede. 20 modelli katalog ve veri toplayıcı hazır; yeniden ele aldığımda sıradaki adım ilk yayın.',
       },
-    },
-  },
-  {
-    slug: 'mulk',
-    name: 'Mülk',
-    status: 'building',
-    platforms: ['iOS'],
-    startedAt: '2026-07',
-    tagline: {
-      en: 'A calm home for the property you own. Coming to iPhone.',
-      tr: 'Sahip olduğun mülkler için sakin bir yer. iPhone’a geliyor.',
     },
   },
   {
     slug: 'sinyal-lab',
     name: 'Sinyal Lab',
-    status: 'building',
+    status: 'paused',
     platforms: [],
     startedAt: '2026-09',
     tagline: {
@@ -303,8 +397,41 @@ const sources: ProjectSource[] = [
         },
       ],
       now: {
-        en: 'In development — currently in the research and backtesting phase.',
-        tr: 'Geliştiriliyor — şu an araştırma ve backtest aşamasında.',
+        en: 'On hold in the research and backtesting phase; the next step is the first research report and a go/no-go decision.',
+        tr: 'Araştırma ve backtest aşamasında beklemede; sıradaki adım ilk araştırma raporu ve devam/durdur kararı.',
+      },
+    },
+  },
+  {
+    slug: 'shiploud',
+    name: 'Shiploud',
+    status: 'paused',
+    platforms: ['Web'],
+    startedAt: '2026-10',
+    tagline: {
+      en: 'An AI content production and scheduling tool for app makers.',
+      tr: 'Uygulama geliştiricileri için AI destekli içerik üretim ve zamanlama aracı.',
+    },
+    stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'Railway'],
+    detail: {
+      intro: [
+        {
+          en: 'Shiploud started from the need to produce and manage social content for my own apps. It brought AI drafts, slideshow editing, review and scheduling into one workspace.',
+          tr: 'Shiploud, kendi uygulamalarım için sosyal medya içeriği üretme ve yönetme ihtiyacından doğdu. AI taslakları, slayt düzenlemeyi, onayı ve zamanlamayı tek çalışma alanında topladı.',
+        },
+        {
+          en: 'In October 2026 I stopped adding features so the studio could focus on launching Receipts. It comes back only if the same pain keeps showing up in my own work.',
+          tr: 'Ekim 2026’da stüdyonun Receipts lansmanına odaklanması için yeni özellik eklemeyi durdurdum. Ancak aynı ihtiyaç kendi işimde tekrar tekrar ortaya çıkarsa geri dönecek.',
+        },
+      ],
+      highlights: [
+        { en: 'AI-assisted drafts using per-app personas and recipes', tr: 'Uygulamaya özel persona ve tariflerle AI destekli taslaklar' },
+        { en: 'Slideshow editing and story-based Reels channels', tr: 'Slayt düzenleme ve hikâye odaklı Reels kanalları' },
+        { en: 'Review, scheduling and a publishing queue', tr: 'Onay, zamanlama ve yayın kuyruğu' },
+      ],
+      now: {
+        en: 'On hold since October 2026 while the studio focuses on Receipts.',
+        tr: 'Stüdyo odağı Receipts’te olduğu için Ekim 2026’dan beri beklemede.',
       },
     },
   },

@@ -4,12 +4,14 @@ const dotColor: Record<ProjectStatus, string> = {
   live: 'bg-emerald-500',
   soon: 'bg-amber-500',
   building: 'bg-sky-500',
+  paused: 'bg-stone-400',
 }
 
 const textColor: Record<ProjectStatus, string> = {
   live: 'text-emerald-600 dark:text-emerald-400',
   soon: 'text-amber-700 dark:text-amber-500',
   building: 'text-sky-700 dark:text-sky-400',
+  paused: 'text-stone-500 dark:text-stone-400',
 }
 
 export function StatusBadge({

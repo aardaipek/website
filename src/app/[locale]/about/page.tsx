@@ -64,13 +64,23 @@ function story(locale: Locale) {
           Redux) geliştiriyorum.
         </p>
         <p>
-          Mesaimin dışında kendi ürünlerimi geliştiriyorum &mdash; tasarımdan
-          koda, App Store’a kadar tek başıma. Hepsini{' '}
+          Mesaimin dışında bağımsız ürün stüdyom{' '}
+          <InlineLink href="https://hiroo-studio.vercel.app">Hiroo Studio</InlineLink>
+          ’yu yürütüyorum. Orada bir <Strong>agentic engineer</Strong> olarak
+          çalışıyorum: ürün kararları, mimari ve son kontrol bende; kodun,
+          testlerin ve dokümantasyonun büyük kısmını Claude Code ve Codex gibi
+          AI ajanları, ortak stüdyo kurallarıyla benimle birlikte yazıyor. Tek
+          bir kişinin iOS, macOS ve web ürünlerini tasarlayıp App Store’a kadar
+          götürebilmesi bu sayede mümkün oluyor.
+        </p>
+        <p>
+          Ürünlerin çoğu da AI üzerine kurulu: Receipts bir WhatsApp sohbetini
+          AI ile analiz edip paylaşılabilir bir fişe çeviriyor, Shopthread ise MCP
+          üzerinden Etsy mağazalarını Claude’a bağlıyor. Hepsini{' '}
           <InlineLink href={localizePath(locale, '/projects')}>
             projeler
           </InlineLink>{' '}
-          sayfasında bulabilirsin. Uzun vadeli hedefim bunları küçük, bağımsız
-          bir stüdyoya dönüştürmek.
+          sayfasında bulabilirsin.
         </p>
         <p>
           Ama sadece bir geliştirici değilim. Piyasaları araştırmaya, finans
@@ -118,11 +128,22 @@ function story(locale: Locale) {
         intelligence.
       </p>
       <p>
-        Outside of work I build my own products &mdash; design, code and App
-        Store launch, all on my own. You can find them on the{' '}
+        Outside of work I run{' '}
+        <InlineLink href="https://hiroo-studio.vercel.app">Hiroo Studio</InlineLink>,
+        my independent product studio. I work there as an{' '}
+        <Strong>agentic engineer</Strong>: I own the product decisions, the
+        architecture and the final review, while AI agents such as Claude Code
+        and Codex write much of the code, tests and documentation with me under
+        one shared set of studio rules. That is how one person can design,
+        build and ship iOS, macOS and web products all the way to the App
+        Store.
+      </p>
+      <p>
+        Most of the products are AI-native too: Receipts uses AI to turn a
+        WhatsApp chat into a receipt you can share, and Shopthread connects
+        Etsy shops to Claude over MCP. You can find them all on the{' '}
         <InlineLink href={localizePath(locale, '/projects')}>projects</InlineLink>{' '}
-        page. The long-term goal is to grow them into a small, independent
-        studio.
+        page.
       </p>
       <p>
         But I&apos;m not just a developer. I spend a serious amount of time
@@ -165,9 +186,20 @@ function now(locale: Locale) {
           Prisync’te Senior Full-Stack Developer olarak çalışıyorum &mdash;
           Node.js, React, AWS ve aradaki her şey.
         </p>
-        <p>{galata}’ı büyütüyorum &mdash; web’de ve App Store’da yayında.</p>
         <p>
-          Place Timer Mac App Store’da. Sıradaki uygulama çok yakında geliyor.
+          Hiroo Studio’yu agentic engineer olarak yürütüyorum &mdash; AI
+          ajanlarıyla AI destekli ürünler geliştiriyorum.
+        </p>
+        <p>
+          iPhone için AI destekli Chat Wrapped uygulaması Receipts App
+          Review’da; onaylanınca yayında.
+        </p>
+        <p>
+          Etsy mağazalarını Claude’dan yönetmeyi sağlayan Shopthread erken
+          erişimde.
+        </p>
+        <p>
+          {galata} web’de ve App Store’da, Place Timer Mac App Store’da yayında.
         </p>
         <p>Uzun vadeli yatırım stratejileri araştırıyorum.</p>
         <p>Daha düzenli yazmaya çalışıyorum.</p>
@@ -181,8 +213,19 @@ function now(locale: Locale) {
         Working at Prisync as a Senior Full-Stack Developer &mdash; Node.js,
         React, AWS, and everything in between.
       </p>
-      <p>Growing {galata} &mdash; live on the web and the App Store.</p>
-      <p>Place Timer is out on the Mac App Store. The next app lands very soon.</p>
+      <p>
+        Running Hiroo Studio as an agentic engineer &mdash; building AI-powered
+        products with a team of AI agents.
+      </p>
+      <p>
+        Receipts, an AI Chat Wrapped app for iPhone, is in App Review and goes
+        live once it’s approved.
+      </p>
+      <p>Shopthread, which lets Etsy sellers run their shop from Claude, is in early access.</p>
+      <p>
+        {galata} is live on the web and the App Store; Place Timer is on the
+        Mac App Store.
+      </p>
       <p>Researching long-term investment strategies.</p>
       <p>Trying to write more consistently.</p>
     </>

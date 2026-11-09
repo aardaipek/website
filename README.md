@@ -1,3 +1,11 @@
+# ardaipek.net — kişisel site
+
+Next.js + Tailwind + Notion API, Vercel'de yayında. Komutlar: `npm run dev`, `npm run build`, `npm start`. Studio girişi ve güncel durum: [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md).
+
+> Aşağıdaki metin projenin ilk Create React App şablonundan kalmıştır ve güncel değildir.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

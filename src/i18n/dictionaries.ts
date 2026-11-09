@@ -2,7 +2,8 @@ import type { Locale } from './config'
 
 const en = {
   meta: {
-    description: 'Backend developer, investor, researcher, cyclist.',
+    description:
+      'Agentic engineer building AI-powered products at Hiroo Studio. Investor, researcher, cyclist.',
   },
   nav: {
     writing: 'Writing',
@@ -18,10 +19,12 @@ const en = {
   home: {
     greeting: 'Hey, I’m Arda',
     introBeforeLink:
-      'I’m a software developer based in Istanbul. I build backend systems during the day and my own products at night. Right now most of that energy goes into ',
-    introAfterLink: ', the investing tool I’m building on my own.',
+      'I’m an agentic engineer based in Istanbul. I build backend systems during the day, and the rest of the time I build my own AI-powered products — with AI agents as my engineering team. They all live under ',
+    introAfterLink: ', my independent product studio.',
     introSecond:
       'This is my corner of the internet — a place where I share what I’m building, what I’m learning, and what I’m thinking about. No algorithm, no feed. Just me.',
+    studioNow:
+      'Right now the studio is launching Receipts, an AI Chat Wrapped app for iPhone, and opening early access to Shopthread, which lets Etsy sellers run their shop from Claude. Galata Finance and Place Timer are already live.',
     building: 'Building',
     allProjects: 'All projects',
     into: 'What I’m into',
@@ -45,15 +48,16 @@ const en = {
   },
   projects: {
     title: 'Projects',
-    description: 'Products I design, build and ship on my own.',
+    description: 'AI-powered products I design, build and ship at Hiroo Studio.',
     intro:
-      'Products I design, build and ship on my own — from the backend to the App Store. Each one starts as something I need myself. The goal is to grow them into a small, independent studio.',
+      'Products I design, build and ship at Hiroo Studio, my independent product studio — from the backend to the App Store. I work as an agentic engineer: I own the product, the architecture and the review, while AI agents like Claude Code write much of the code with me. Each one starts as something I need myself.',
     shipped: 'Shipped',
     inTheWorks: 'In the works',
     status: {
       live: 'Live',
       soon: 'Coming soon',
       building: 'In development',
+      paused: 'On hold',
     },
     links: {
       website: 'Website',
@@ -68,7 +72,7 @@ const en = {
     platforms: 'Platforms',
     since: 'Since',
     role: 'Role',
-    solo: 'Solo — design, code, launch',
+    solo: 'Solo, agentic — design, code with AI agents, launch',
   },
   writing: {
     title: 'Writing',
@@ -112,7 +116,7 @@ const en = {
     title: 'About',
     description: 'The story behind the person.',
     now: 'Now',
-    lastUpdated: 'Last updated: September 2026',
+    lastUpdated: 'Last updated: November 2026',
   },
 }
 
@@ -120,7 +124,8 @@ export type Dictionary = typeof en
 
 const tr: Dictionary = {
   meta: {
-    description: 'Backend geliştirici, yatırımcı, araştırmacı, bisikletçi.',
+    description:
+      'Hiroo Studio’da AI destekli ürünler geliştiren agentic engineer. Yatırımcı, araştırmacı, bisikletçi.',
   },
   nav: {
     writing: 'Yazılar',
@@ -136,10 +141,12 @@ const tr: Dictionary = {
   home: {
     greeting: 'Selam, ben Arda',
     introBeforeLink:
-      'İstanbul’da yaşayan bir yazılım geliştiriciyim. Gündüzleri backend sistemleri, geceleri kendi ürünlerimi geliştiriyorum. Şu sıralar enerjimin çoğu, tek başıma geliştirdiğim yatırım aracı ',
-    introAfterLink: ' üzerinde.',
+      'İstanbul’da yaşayan bir agentic engineer’ım. Gündüzleri backend sistemleri, kalan zamanda ise AI ajanlarını mühendislik ekibim olarak kullanıp kendi AI destekli ürünlerimi geliştiriyorum. Hepsi bağımsız ürün stüdyom ',
+    introAfterLink: ' çatısı altında.',
     introSecond:
       'Burası internetteki köşem — ne geliştirdiğimi, ne öğrendiğimi ve ne düşündüğümü paylaştığım bir yer. Algoritma yok, akış yok. Sadece ben.',
+    studioNow:
+      'Stüdyo şu sıralar iPhone için AI destekli Chat Wrapped uygulaması Receipts’i yayına hazırlıyor ve Etsy satıcılarının mağazalarını Claude’dan yönetmesini sağlayan Shopthread’in erken erişimini açıyor. Galata Finance ve Place Timer zaten yayında.',
     building: 'Geliştirdiklerim',
     allProjects: 'Tüm projeler',
     into: 'İlgi alanlarım',
@@ -163,15 +170,16 @@ const tr: Dictionary = {
   },
   projects: {
     title: 'Projeler',
-    description: 'Tek başıma tasarlayıp geliştirdiğim ve yayına aldığım ürünler.',
+    description: 'Hiroo Studio’da tasarlayıp geliştirdiğim ve yayına aldığım AI destekli ürünler.',
     intro:
-      'Backend’den App Store’a kadar tek başıma tasarlayıp geliştirdiğim ve yayına aldığım ürünler. Her biri kendi ihtiyacımdan doğuyor. Hedefim onları küçük, bağımsız bir stüdyoya dönüştürmek.',
+      'Bağımsız ürün stüdyom Hiroo Studio’da backend’den App Store’a kadar tasarlayıp geliştirdiğim ve yayına aldığım ürünler. Agentic engineer olarak çalışıyorum: ürün, mimari ve son kontrol bende; kodun büyük kısmını Claude Code gibi AI ajanları benimle birlikte yazıyor. Her biri kendi ihtiyacımdan doğuyor.',
     shipped: 'Yayında',
     inTheWorks: 'Yolda',
     status: {
       live: 'Yayında',
       soon: 'Yakında',
       building: 'Geliştiriliyor',
+      paused: 'Beklemede',
     },
     links: {
       website: 'Web sitesi',
@@ -186,7 +194,7 @@ const tr: Dictionary = {
     platforms: 'Platformlar',
     since: 'Başlangıç',
     role: 'Rol',
-    solo: 'Tek kişi — tasarım, kod, yayın',
+    solo: 'Tek kişi, agentic — tasarım, AI ajanlarla kod, yayın',
   },
   writing: {
     title: 'Yazılar',
@@ -230,7 +238,7 @@ const tr: Dictionary = {
     title: 'Hakkımda',
     description: 'Kişinin arkasındaki hikâye.',
     now: 'Şimdi',
-    lastUpdated: 'Son güncelleme: Eylül 2026',
+    lastUpdated: 'Son güncelleme: Kasım 2026',
   },
 }
 

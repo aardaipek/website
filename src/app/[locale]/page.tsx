@@ -62,15 +62,16 @@ export default async function Home({ params }: Props) {
           <p>
             {t.introBeforeLink}
             <a
-              href="https://galatafinance.com"
+              href="https://hiroo-studio.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-stone-900 dark:text-stone-100 font-medium underline underline-offset-2 decoration-stone-300 dark:decoration-stone-600 hover:decoration-amber-700 dark:hover:decoration-amber-500 transition-colors"
             >
-              Galata Finance
+              Hiroo Studio
             </a>
             {t.introAfterLink}
           </p>
+          <p>{t.studioNow}</p>
           <p>{t.introSecond}</p>
         </div>
       </section>
