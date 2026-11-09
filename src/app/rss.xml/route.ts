@@ -9,7 +9,7 @@ export async function GET() {
   <channel>
     <title>Arda Ipek</title>
     <link>${siteUrl}</link>
-    <description>Backend developer, investor, researcher, cyclist.</description>
+    <description>Agentic engineer building AI-powered products at Hiroo Studio. Investor, researcher, cyclist.</description>
     <language>tr</language>
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>
     ${posts
