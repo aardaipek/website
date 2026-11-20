@@ -24,7 +24,7 @@ const en = {
     introSecond:
       'This is my corner of the internet — a place where I share what I’m building, what I’m learning, and what I’m thinking about. No algorithm, no feed. Just me.',
     studioNow:
-      'Right now the studio is launching Receipts, an AI Chat Wrapped app for iPhone, and opening early access to Shopthread, which lets Etsy sellers run their shop from Claude. Galata Finance and Place Timer are already live.',
+      'Right now the studio is launching Receipts, an AI Chat Wrapped app for iPhone that just went live on the App Store, and opening early access to Shopthread, which lets Etsy sellers run their shop from Claude. Galata Finance and Place Timer are already live.',
     building: 'Building',
     allProjects: 'All projects',
     into: 'What I’m into',
@@ -146,7 +146,7 @@ const tr: Dictionary = {
     introSecond:
       'Burası internetteki köşem — ne geliştirdiğimi, ne öğrendiğimi ve ne düşündüğümü paylaştığım bir yer. Algoritma yok, akış yok. Sadece ben.',
     studioNow:
-      'Stüdyo şu sıralar iPhone için AI destekli Chat Wrapped uygulaması Receipts’i yayına hazırlıyor ve Etsy satıcılarının mağazalarını Claude’dan yönetmesini sağlayan Shopthread’in erken erişimini açıyor. Galata Finance ve Place Timer zaten yayında.',
+      'Stüdyo şu sıralar App Store’da yeni yayına çıkan, iPhone için AI destekli Chat Wrapped uygulaması Receipts’in lansmanını yapıyor ve Etsy satıcılarının mağazalarını Claude’dan yönetmesini sağlayan Shopthread’in erken erişimini açıyor. Galata Finance ve Place Timer zaten yayında.',
     building: 'Geliştirdiklerim',
     allProjects: 'Tüm projeler',
     into: 'İlgi alanlarım',

@@ -66,8 +66,8 @@ const sources: ProjectSource[] = [
           tr: 'Ürünlerin içinde AI: Receipts’te AI ile sohbet analizi, Shopthread’de Etsy mağazalarını Claude’a bağlayan MCP sunucusu',
         },
         {
-          en: 'Shipped on the App Store and the Mac App Store: Galata Finance and Place Timer',
-          tr: 'App Store ve Mac App Store’da yayında: Galata Finance ve Place Timer',
+          en: 'Shipped on the App Store and the Mac App Store: Galata Finance, Place Timer and Receipts',
+          tr: 'App Store ve Mac App Store’da yayında: Galata Finance, Place Timer ve Receipts',
         },
         {
           en: 'One studio site for every product page, landing, support and privacy page',
@@ -75,22 +75,25 @@ const sources: ProjectSource[] = [
         },
       ],
       now: {
-        en: 'The current focus is launching Receipts. Shopthread is in early access; Galata Finance and Place Timer are live.',
-        tr: 'Şu anki odak Receipts lansmanı. Shopthread erken erişimde; Galata Finance ve Place Timer yayında.',
+        en: 'The current focus is Receipts, which went live on the App Store on 20 November 2026. Shopthread is in early access; Galata Finance and Place Timer are live.',
+        tr: 'Şu anki odak, 20 Kasım 2026’da App Store’da yayına çıkan Receipts. Shopthread erken erişimde; Galata Finance ve Place Timer yayında.',
       },
     },
   },
   {
     slug: 'receipts',
     name: 'Receipts',
-    status: 'soon',
+    status: 'live',
     platforms: ['iOS'],
     startedAt: '2026-09',
     tagline: {
       en: 'AI-powered Chat Wrapped for iPhone: turns a WhatsApp chat into a receipt you can share.',
       tr: 'iPhone için AI destekli Chat Wrapped: bir WhatsApp sohbetini paylaşılabilir bir fişe çeviriyor.',
     },
-    links: [{ kind: 'website', href: 'https://hiroo-studio.vercel.app/en/apps/receipts' }],
+    links: [
+      { kind: 'website', href: 'https://hiroo-studio.vercel.app/en/apps/receipts' },
+      { kind: 'appStore', href: 'https://apps.apple.com/app/id6816905001' },
+    ],
     stack: ['SwiftUI', 'RevenueCat', 'TypeScript', 'Vercel', 'AI Gateway', 'Claude'],
     detail: {
       intro: [
@@ -122,8 +125,8 @@ const sources: ProjectSource[] = [
         },
       ],
       now: {
-        en: 'In App Review. It launches on the App Store for iPhone as soon as Apple approves it — the studio’s main focus right now.',
-        tr: 'App Review’da. Apple onaylar onaylamaz iPhone için App Store’da yayına çıkıyor — stüdyonun şu anki ana odağı.',
+        en: 'Live on the App Store for iPhone since 20 November 2026. It’s the studio’s main focus right now.',
+        tr: '20 Kasım 2026’dan beri iPhone için App Store’da yayında. Stüdyonun şu anki ana odağı.',
       },
     },
   },
