@@ -192,7 +192,7 @@ function now(locale: Locale) {
         </p>
         <p>
           iPhone için AI destekli Chat Wrapped uygulaması Receipts App
-          Review’da; onaylanınca yayında.
+          Store’da yayında.
         </p>
         <p>
           Etsy mağazalarını Claude’dan yönetmeyi sağlayan Shopthread erken
@@ -218,8 +218,7 @@ function now(locale: Locale) {
         products with a team of AI agents.
       </p>
       <p>
-        Receipts, an AI Chat Wrapped app for iPhone, is in App Review and goes
-        live once it’s approved.
+        Receipts, an AI Chat Wrapped app for iPhone, is live on the App Store.
       </p>
       <p>Shopthread, which lets Etsy sellers run their shop from Claude, is in early access.</p>
       <p>
